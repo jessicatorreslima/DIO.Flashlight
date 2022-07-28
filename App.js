@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Image, TouchableOpacity, Text} from 'react-native';
 import Torch from 'react-native-torch';
 import RNShake from 'react-native-shake';
 
@@ -37,9 +37,16 @@ const App = () => {
               : require('./assets/img/wand_off.png')
           }
         />
+        <Text
+          style={[
+            style.defaultText,
+            switcher ? style.containerLight : style.containerDark,
+          ]}>
+          Tap or shake to cast:
+        </Text>
         <Image
           style={[
-            style.word,
+            style.spell,
             switcher ? style.containerLight : style.containerDark,
           ]}
           source={
@@ -58,21 +65,26 @@ export default App;
 const style = StyleSheet.create({
   containerDark: {
     backgroundColor: 'black',
-    tintColor: 'white',
+    color: 'white',
   },
   containerLight: {
     backgroundColor: 'white',
-    tintColor: 'black',
+    color: 'black',
   },
   centered: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  word: {
+  spell: {
     resizeMode: 'contain',
     alignSelf: 'center',
     width: 120,
-    height: 100,
+    height: 80,
+  },
+  defaultText: {
+    textAlign: 'center',
+    fontSize: 14,
+    marginTop: 10,
   },
 });
